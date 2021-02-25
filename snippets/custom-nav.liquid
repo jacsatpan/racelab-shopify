@@ -1,0 +1,12 @@
+<div class="custom-nav small-hide">
+    <div class="grid">
+        {% for collection in collections %}
+            <div class="grid__item medium-up--one-third">
+                <a href="{{ collection.url }}" class="custom-nav__item">
+                    <span class="custom-nav__item__label">{{ collection.title }}</span>
+                    <div class="custom-nav__item__img" style="background-image: url('{{ collection.image | img_url: '72x72' }}')"></div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
