@@ -45,5 +45,26 @@
             </ul>
           </span>
 		</span>
+    <script type="text/javascript">
+      /* global sswRun */
+      sswRun(function () {
+        let options = {
+          rootMargin: '0px',
+          threshold: 0.1
+        }
+        let callback = function (entries, observer) {
+          if (entries[0].isIntersecting) {
+            let loader = Ssw.gwAssetsManifestLoader;
+            loader.requireByKey("lib.dropdown.css", "STYLE");
+            loader.requireByKey("lib.dropdown.js", "SCRIPT");
+            loader.requireByKey("login.main.css", "STYLE");
+            loader.requireByKey("login.main.js", "SCRIPT");
+            observer.unobserve(entries[0].target);
+          }
+        };
+        let observer = new IntersectionObserver(callback, options);
+        observer.observe(document.querySelector('.ssw-auth-dropdown'));
+      });
+    </script>
   {% endif %}
 {% endif %}

@@ -55,9 +55,10 @@
           "logo": "shopify:\/\/shop_images\/RaceLab-Logo-SL.png",
           "logo_max_width": 190,
           "main_linklist": "main-menu",
-          "message": false,
+          "message": true,
           "home_page_only": false,
-          "message_text": "Alert Level 3 update: while our showroom is closed, we are still accepting online orders for contactless delivery",
+          "message_text": "Alert Level 4 update: while our showroom is closed, we are still accepting online orders for delivery as soon as possible",
+          "message_link": "",
           "color_bg": "#fd8408",
           "color_text": "#ffffff"
         }
@@ -211,6 +212,24 @@
             "settings": {
               "collection": "piaa-halogen-bulbs-hyper-arros-3900k"
             }
+          },
+          "bf4ae092-b29d-4aa5-953d-f7a83fb20746": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "caps-hats"
+            }
+          },
+          "e9030d84-2aac-4074-bee0-9966f39dc592": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "braid-wheels"
+            }
+          },
+          "8d2ce743-9a91-4add-929d-9cedac97a720": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "cleaning"
+            }
           }
         },
         "block_order": [
@@ -228,7 +247,10 @@
           "1574555919231",
           "1587684761152",
           "1589845100496",
-          "1589845209546"
+          "1589845209546",
+          "bf4ae092-b29d-4aa5-953d-f7a83fb20746",
+          "e9030d84-2aac-4074-bee0-9966f39dc592",
+          "8d2ce743-9a91-4add-929d-9cedac97a720"
         ],
         "settings": {
           "title": "",
@@ -351,7 +373,7 @@
           "1592188513734": {
             "type": "collection",
             "settings": {
-              "collection": "specials"
+              "collection": "braid-wheels"
             }
           },
           "1592188524505": {

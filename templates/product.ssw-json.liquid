@@ -2,12 +2,13 @@
 {%assign options_size =  product.options_with_values | size %}
 {%assign variants_size =  product.variants | size %}
 {%assign images_size =  product.images | size %}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
 
 {%assign options_i =  0 %}
 {%assign variants_i =  0 %}
 {%assign images_i =  0 %}
-{%assign divided_price =  product.selected_or_first_available_variant.price | divided_by: 100 %}
-{%assign modulo_price =  product.selected_or_first_available_variant.price | modulo: 100 %}
+{%assign divided_price =  current_variant.price | divided_by: 100 %}
+{%assign modulo_price =  current_variant.price | modulo: 100 %}
 {% if modulo_price > 9 %}
   {%assign modulo_price = '.' | append: modulo_price %}
 {% elsif modulo_price > 0 %}
@@ -17,8 +18,8 @@
 {% endif %}
 {%assign price =  divided_price | append: modulo_price %}
 
-{%assign divided_compare_at_price =  product.compare_at_price | divided_by: 100 %}
-{%assign modulo_compare_at_price =  product.compare_at_price | modulo: 100 %}
+{%assign divided_compare_at_price =  current_variant.compare_at_price | divided_by: 100 %}
+{%assign modulo_compare_at_price =  current_variant.compare_at_price | modulo: 100 %}
 {% if modulo_compare_at_price > 0 %}
   {%assign modulo_compare_at_price = '.' | append: modulo_compare_at_price %}
 {% else %}

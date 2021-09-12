@@ -18,9 +18,9 @@
         </ul>
       </div>
     {% else %}
-      <a id="customer_login_link" href="javascript:void(0);" data-toggle="ssw-modal" data-target="#login_modal" onclick="trackShopStats('login_popup_view', 'all')">{{ 'socialshopwave.log_in' | t }}</a>
+      <a id="customer_login_link" href="#" data-toggle="ssw-modal" data-target="#login_modal" onclick="event.preventDefault();trackShopStats('login_popup_view', 'all')"><span class="ssw-visually-hidden" style="font-size:0">{{ shop.metafields.ssw.lang.go_to }}</span>{{ 'socialshopwave.log_in' | t }}</a>
       <span class="ssw-login-divider">/</span>
-      <a id="customer_register_link" data-toggle="ssw-modal" data-target="#signup_modal" href="javascript:void(0);" onclick="trackShopStats('login_popup_view', 'all')">{{ 'socialshopwave.sign_up' | t }}</a>
+      <a id="customer_register_link" data-toggle="ssw-modal" data-target="#signup_modal" href="#" onclick="event.preventDefault();trackShopStats('login_popup_view', 'all')"><span class="ssw-visually-hidden" style="font-size:0">{{ shop.metafields.ssw.lang.go_to }}</span>{{ 'socialshopwave.sign_up' | t }}</a>
     {% endif %}
   </div>
 {% endif %}

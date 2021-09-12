@@ -35,7 +35,7 @@
     {% endif %}
   {% endif %}
 
-  <div class="ssw-widget-avg-rate-listing ssw-stars ssw-stars-large {% if ssw_count_rate == 0 %}ssw-hide{% endif %}" >
+  <div class="ssw-widget-avg-rate-listing ssw-stars ssw-stars-large {% if ssw_count_rate == 0 %}ssw-hide{% endif %}" data-rate="{{ ssw_avg_rate }}">
     {% assign ssw_j = ssw_avg_rate | floor %}
     {% for i in (1..ssw_j) %}
       <i class="ssw-icon-star"></i>
