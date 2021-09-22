@@ -24,7 +24,6 @@
 {% endif %}
 
 
-
 <dl class="price
   {% if available == false %} price--sold-out {% endif %}
   {% if available and compare_at_price > price %} price--on-sale {% endif %}
@@ -44,20 +43,30 @@
   {% endif %}
   
   
-  
-  <div class="price__regular">
-     <dd>
-      <span class="price-item-vat"> 
-        {{ money_price_VAT }}
-      </span>  
-    </dd>
-    
-    <dd>
-      <span class="price-item price-item--regular">
-        {{ money_price }} <small> excl. GST</small>
-      </span>
-    </dd>
-  </div>
+  {% if product.gift_card? %}
+    <div class="price__regular">
+      <dd>
+        <span class="price-item-vat">
+          {{ money_price }}
+        </span>
+      </dd>
+    </div>
+  {% else %}
+      <div class="price__regular">
+        <dd>
+          <span class="price-item-vat">
+            {{ money_price_VAT }}
+          </span>
+        </dd>
+
+        <dd>
+          <span class="price-item price-item--regular">
+            {{ money_price }} <small> excl. GST</small>
+          </span>
+        </dd>
+      </div>
+  {% endif %}
+
 
   
   <div class="price__sale">

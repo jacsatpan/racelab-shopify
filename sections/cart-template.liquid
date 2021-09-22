@@ -101,13 +101,21 @@
                         <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
                       </dt>
                       <dd>
-                        <s data-cart-item-original-price>{{ item.original_price | times:1.15 | money }}</s>
+                        {% if item.gift_card %}
+                          <s data-cart-item-original-price>{{ item.original_price | money }}</s>
+                        {% else %}
+                          <s data-cart-item-original-price>{{ item.original_price | money }}</s>
+                        {% endif %}
                       </dd>
                       <dt>
                         <span class="visually-hidden">{{ 'products.product.sale_price' | t }}</span>
                       </dt>
                       <dd>
-                        <span class="order-discount" data-cart-item-final-price>{{ item.final_price | times:1.15 | money }}</span>
+                        {% if item.gift_card %}
+                          <span class="order-discount" data-cart-item-final-price>{{ item.final_price | money }}</span>
+                        {% else %}
+                          <span class="order-discount" data-cart-item-final-price>{{ item.final_price | money }}</span>
+                        {% endif %}
                       </dd>
                     </div>
 
@@ -119,7 +127,11 @@
                         <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
                       </dt>
                       <dd data-cart-item-regular-price>
-                        {{ item.original_price | times:1.15 | money }}
+                        {% if item.gift_card %}
+                          {{ item.original_price | money }}
+                        {% else %}
+                          {{ item.original_price | money }}
+                        {% endif %}
                       </dd>
                     </div>
 
@@ -142,7 +154,11 @@
                             {{ item.unit_price_measurement.reference_unit }}
                           {%- endcapture -%}
 
-                          <span data-unit-price>{{ item.unit_price | times:1.15 | money }}</span>{{- unit_price_separator -}}<span data-unit-price-base-unit>{{- unit_price_base_unit -}}</span>
+                          {% if item.gift_card %}
+                            <span data-unit-price>{{ item.unit_price | money }}</span>{{- unit_price_separator -}}<span data-unit-price-base-unit>{{- unit_price_base_unit -}}</span>
+                          {% else %}
+                            <span data-unit-price>{{ item.unit_price | money }}</span>{{- unit_price_separator -}}<span data-unit-price-base-unit>{{- unit_price_base_unit -}}</span>
+                          {% endif %}
                         </span>
                       </dd>
                     </div>
@@ -160,7 +176,7 @@
                       {% include 'icon-saletag' %}
                       <span data-cart-item-discount-title>
                         {{- discount_allocation.discount_application.title -}}
-                      </span> (-<span data-cart-item-discount-amount>{{ discount_allocation.amount | times:1.15 | money }}</span>)
+                      </span> (-<span data-cart-item-discount-amount>{{ discount_allocation.amount | money }}</span>)
                     </li>
                   {%- endfor -%}
                 </ul>
@@ -201,13 +217,21 @@
                     <span class="visually-hidden">{{ 'cart.label.regular_total' | t }}</span>
                   </dt>
                   <dd>
-                    <s data-cart-item-original-price>{{ item.original_line_price | times:1.15 | money }}</s>
+                    {% if item.gift_card %}
+                      <s data-cart-item-original-price>{{ item.original_line_price | money }}</s>
+                    {% else %}
+                      <s data-cart-item-original-price>{{ item.original_line_price | money }}</s>
+                    {% endif %}
                   </dd>
                   <dt>
                     <span class="visually-hidden">{{ 'cart.label.discounted_total' | t }}</span>
                   </dt>
                   <dd>
-                    <span class="order-discount" data-cart-item-final-price>{{ item.final_line_price | times:1.15 | money }}</span>
+                    {% if item.gift_card %}
+                      <span class="order-discount" data-cart-item-final-price>{{ item.final_line_price | money }}</span>
+                    {% else %}
+                      <span class="order-discount" data-cart-item-final-price>{{ item.final_line_price | money }}</span>
+                    {% endif %}
                   </dd>
                 </dl >
 
@@ -215,7 +239,11 @@
                   Markup template for regular price item
                 {%- endcomment -%}
                 <div {% if item.original_line_price != item.final_line_price %}class="hide" {% endif %}data-cart-item-regular-price-group>
-                  <span data-cart-item-regular-price>{{ item.original_line_price | times:1.15 | money }}</span>
+                  {% if item.gift_card %}
+                    <span data-cart-item-regular-price>{{ item.original_line_price | money }}</span>
+                  {% else %}
+                    <span data-cart-item-regular-price>{{ item.original_line_price  | money }}</span>
+                  {% endif %}
                 </div>
               </td>
             </tr>
@@ -244,7 +272,7 @@
                     {% include 'icon-saletag' %}<span class="visually-hidden">{{ 'customer.order.discount' | t }}:</span><span data-cart-discount-title>{{- discount_application.title -}}</span>
                   </span>
                   <span class="order-discount order-discount--cart order-discount--cart-total">
-                    -<span data-cart-discount-amount>{{ discount_application.total_allocated_amount | times:1.15 | money }}</span>
+                    -<span data-cart-discount-amount>{{ discount_application.total_allocated_amount | money }}</span>
                   </span>
                 {%- endfor -%}
               </div>
@@ -252,7 +280,9 @@
 
             <div class="cart-subtotal">
               <span class="cart-subtotal__title"><span id='revy-cart-subtotal-label'>{{ 'cart.general.subtotal' | t }}</span></span>
-              <span class="cart-subtotal__price" data-cart-subtotal><span id='revy-cart-subtotal-price'>{{ cart.total_price | times:1.15 | money_with_currency }}</span><br /> Excl GST: <span id='revy-cart-subtotal-price'>{{ cart.total_price | money }}</span></span>
+              <span class="cart-subtotal__price" data-cart-subtotal>
+                <span id='revy-cart-subtotal-price'><b>{{ cart.original_total_price | money_with_currency }}</b> Excl GST</span>
+              </span>
             </div>
 
             {%- capture taxes_shipping_checkout -%}
